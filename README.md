@@ -40,10 +40,10 @@
 
 
 
-## 🖼️ System Overview (At a Glance)
+## System Overview (At a Glance)
 
-<!-- TU DAJESZ DIAGRAM AWS + DOCKER NA SAMEJ GÓRZE -->
-<img width="1050" alt="Architecture Overview" src="PUT_ARCHITECTURE_DIAGRAM_HERE" />
+
+<img width="800" alt="overview" src="https://github.com/user-attachments/assets/3f7d1c03-6ec3-4f78-9e5c-e5616481ab6b" />
 
 Kafka → Fraud Detection Service → PostgreSQL  
 ↘ MLflow (Model Registry)  
@@ -57,9 +57,6 @@ An **end-to-end, production-style fraud detection system** processing credit car
 
 Transactions are streamed through Kafka, scored by an **XGBoost model**, stored in PostgreSQL, monitored via dashboards, and **automatically retrained** once enough labeled data is available.  
 The entire stack is containerized with Docker and deployed on **AWS EC2**.
-
-Focus: **real systems, real trade-offs, real MLOps** — not notebook-only ML.
-
 
 
 ## 🧠 Fraud Detection Logic (High-Level)
@@ -75,40 +72,9 @@ Key principles:
 - Continuous model improvement via retraining
 
 
-
-## 🗺️ Architecture Overview
-
-<!-- TU MOŻESZ DAĆ DRUGI, BARDZIEJ TECHNICZNY DIAGRAM -->
-<img width="1050" alt="Detailed Architecture" src="PUT_DETAILED_ARCHITECTURE_IMAGE_HERE" />
-
-- Kafka (Redpanda) for event streaming  
-- XGBoost-based fraud detection service  
-- PostgreSQL for predictions and labels  
-- MLflow for experiments and model registry  
-- Streamlit for real-time monitoring  
-
-
-
-## ⚙️ Core Components
-
-### Infrastructure & Services
-| Component | Purpose |
-|-|--|
-| **Kafka (Redpanda)** | Real-time transaction streaming |
-| **Fraud Detection Service** | XGBoost inference + Kafka consumer |
-| **PostgreSQL** | Transaction storage & ground-truth labels |
-| **MLflow** | Experiment tracking & model registry |
-| **FastAPI** | Manual retraining & health endpoints |
-| **Streamlit** | Live monitoring dashboard |
-| **Docker** | Fully containerized system |
-| **AWS EC2** | Production-like deployment |
-
-
-
 ## 🐳 Docker Deployment
 
-<!-- SCREEN Z DOCKER DESKTOP / docker compose -->
-<img width="1050" alt="Docker Compose Layout" src="PUT_DOCKER_LAYOUT_IMAGE_HERE" />
+<img width="600" alt="overview2" src="https://github.com/user-attachments/assets/4504c410-e22d-4e18-ad37-9c0c0bef65eb" />
 
 - Single `docker compose up` spins up the full stack
 - Stateless services, reproducible environment
@@ -132,35 +98,21 @@ Key principles:
 
 
 
-## 🔁 Automated Retraining
+## 🧪 MLflow with Automated Retraining
 
+<img width="600" alt="mlflow" src="https://github.com/user-attachments/assets/7614bbc4-9ce3-4e6b-9708-c0d3ad5c8c01" />
+
+- Model versioning
 - Retraining triggered when **≥500 labeled transactions** are available
 - Class imbalance handled via weighting
 - New model registered and promoted to **Production** in MLflow
 - Inference service **hot-reloads** the model (no downtime)
 
-Manual retraining endpoint:
-POST /retrain
-
-
-
-
-## 🧪 MLflow – Model Lifecycle
-
-<!-- SCREEN Z MLFLOW -->
-<img width="1050" alt="MLflow Dashboard" src="PUT_MLFLOW_DASHBOARD_IMAGE_HERE" />
-
-- Experiment tracking
-- Metric comparison across runs
-- Model versioning
-- Production stage promotion
-
 
 
 ## 📊 Monitoring Dashboard
 
-<!-- SCREEN Z STREAMLIT -->
-<img width="1050" alt="Streamlit Dashboard" src="PUT_STREAMLIT_DASHBOARD_IMAGE_HERE" />
+<img width="600" alt="dashboard" src="https://github.com/user-attachments/assets/11fcfbee-0207-4a4c-accc-cd57775e089d" />
 
 Live metrics:
 - Total transactions
@@ -170,28 +122,14 @@ Live metrics:
 - Inference latency
 
 
-
 ## 🎥 Demo
-
-<!-- LINK DO FILMIKU -->
-**Short system demo:**  
-PUT_DEMO_VIDEO_LINK_HERE
+https://github.com/user-attachments/assets/fd242d32-32a2-4a61-a250-abe1f54f00ae
 
 
 
-## 🧾 Data Storage
-
-### Table: `transactions`
-| Column | Type | Description |
-|------|------|------------|
-| transaction_id | String | Unique transaction ID |
-| timestamp | Timestamp | Processing time |
-| transaction_data | JSONB | Raw transaction features |
-| prediction | Integer | Fraud / Non-fraud |
-| probability | Float | Fraud probability |
-| processing_time | Float | Inference latency |
-| isReallyFraud | Integer | Ground-truth label (optional) |
-
+## 📊 Dataset Used
+https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
+**Download it as .csv and put it into data/raw_data/creditcard.csv**
 
 
 ## 🎯 Use Cases
