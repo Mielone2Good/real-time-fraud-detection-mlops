@@ -1,0 +1,14 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY fraud_detection ./fraud_detection
+COPY data ./data
+
+ENV PYTHONPATH=/app
+
+# Default data path for fallback model (overridden by volume in compose)
+CMD ["python", "fraud_detection/read_data_stream.py"]

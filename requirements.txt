@@ -1,0 +1,14 @@
+confluent-kafka
+fastapi
+uvicorn[standard]
+kagglehub
+pandas
+scikit-learn
+xgboost
+mlflow
+matplotlib
+numpy
+psycopg2-binary
+streamlit
+plotly
+python-dotenv
