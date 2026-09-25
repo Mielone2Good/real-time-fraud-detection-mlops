@@ -70,11 +70,6 @@ Postgres credentials and the MLflow experiment name come from `POSTGRES_DB`, `PO
 - `/retrain` has no authentication, and the consumer reads a single partition.
 - No automated tests yet.
 
-## Next
-
-Drift detection (PSI on feature distributions) as the retraining trigger, a champion/challenger check before
-promoting a model, and tests in CI.
-
 ## License
 
 MIT
