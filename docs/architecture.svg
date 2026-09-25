@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="830" height="300" viewBox="0 0 830 300">
+  <style>
+    .m{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace}
+    .box{fill:#18181b;stroke:#2e2e33}
+    .hot{fill:#1c1410;stroke:#f97316}
+    .t{fill:#fafafa;font-size:13px}
+    .s{fill:#71717a;font-size:11px}
+    .l{fill:#a1a1aa;font-size:10.5px}
+    .a{stroke:#52525b;stroke-width:1.5;fill:none;marker-end:url(#h)}
+    .ao{stroke:#f97316;stroke-width:1.5;fill:none;marker-end:url(#ho)}
+    .flow{stroke:#f97316;stroke-width:1.5;fill:none;stroke-dasharray:4 8;animation:f 1.2s linear infinite}
+    @keyframes f{to{stroke-dashoffset:-12}}
+  </style>
+  <defs>
+    <marker id="h" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#52525b"/></marker>
+    <marker id="ho" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#f97316"/></marker>
+  </defs>
+  <rect x=".5" y=".5" width="829" height="299" rx="18" fill="#111113" stroke="#26262a"/>
+  <text x="30" y="34" class="m" font-size="12" fill="#f97316">~/architecture</text>
+
+  <g class="m">
+    <rect class="box" x="30" y="58" width="134" height="58" rx="10"/><text x="46" y="83" class="t">simulator</text><text x="46" y="102" class="s">kafka_stream.py</text>
+    <rect class="box" x="194" y="58" width="134" height="58" rx="10"/><text x="210" y="83" class="t">redpanda</text><text x="210" y="102" class="s">topic: transactions</text>
+    <rect class="hot" x="358" y="58" width="134" height="58" rx="10"/><text x="374" y="83" class="t">fraud_detection</text><text x="374" y="102" class="s">XGBoost · 1.9 ms</text>
+    <rect class="box" x="522" y="58" width="134" height="58" rx="10"/><text x="538" y="83" class="t">postgres</text><text x="538" y="102" class="s">predictions, labels</text>
+    <rect class="box" x="686" y="58" width="114" height="58" rx="10"/><text x="702" y="83" class="t">dashboard</text><text x="702" y="102" class="s">streamlit</text>
+  </g>
+  <path class="ao" d="M164 87H192"/><path class="ao" d="M328 87H356"/><path class="ao" d="M492 87H520"/><path class="a" d="M656 87H684"/>
+  <path class="flow" d="M164 87H192M328 87H356M492 87H520"/>
+
+  <g class="m">
+    <rect class="box" x="358" y="200" width="134" height="58" rx="10"/><text x="374" y="225" class="t">mlflow</text><text x="374" y="244" class="s">registry · Production</text>
+    <rect class="box" x="522" y="200" width="134" height="58" rx="10"/><text x="538" y="225" class="t">retraining</text><text x="538" y="244" class="s">≥ 500 labels</text>
+    <rect class="box" x="686" y="200" width="114" height="58" rx="10"/><text x="702" y="225" class="t">labels</text><text x="702" y="244" class="s">delayed feedback</text>
+  </g>
+  <path class="a" d="M589 116V198"/><text x="597" y="152" class="m l">labelled rows</text>
+  <path class="a" d="M522 229H494"/><text x="496" y="190" class="m l" text-anchor="end">register</text><text x="496" y="203" class="m l" text-anchor="end">+ promote</text>
+  <path class="a" d="M425 200V118"/><text x="433" y="152" class="m l">hot reload</text>
+  <path class="a" d="M743 200L656 116"/><text x="712" y="152" class="m l">isReallyFraud</text>
+
+  <text x="30" y="286" class="m" font-size="10.5" fill="#52525b">compose runs every service except the simulator · retraining: every 10 min, or POST /retrain</text>
+</svg>

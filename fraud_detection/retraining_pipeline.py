@@ -58,7 +58,7 @@ class RetrainingPipeline:
             df = pd.concat([df, transaction_data_df], axis=1)
             df = df.drop(columns=['transaction_data'])
         
-        cols_to_drop = ["transaction_id", "timestamp", "prediction", "probability", "processing_time"]
+        cols_to_drop = ["transaction_id", "timestamp", "prediction", "probability", "processing_time", "TransactionID"]
         existing_cols = [col for col in cols_to_drop if col in df.columns]
         df = df.drop(columns=existing_cols, errors='ignore')
         
@@ -190,7 +190,7 @@ if __name__ == "__main__":
     postgres_data_service = PostgresDataService()
     
     retraining_pipeline = RetrainingPipeline(data_service=postgres_data_service)
-    status = retraining_pipeline.retrain_model()
+    status = retraining_pipeline.run_retraining()
     
     print(status)
     postgres_data_service.close()

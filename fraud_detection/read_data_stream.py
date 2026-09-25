@@ -33,7 +33,7 @@ class ProcessDataStream:
         
     async def read_data_stream(self):
         while True:
-            msg = self.consumer.poll(1.0)
+            msg = await asyncio.to_thread(self.consumer.poll, 1.0)
             if msg is None:
                 continue
             if msg.error():
@@ -140,7 +140,7 @@ class ProcessDataStream:
     
 if __name__ == "__main__":
     postgres_data_service = PostgresDataService()
-    retraining_pipeline = RetrainingPipeline(data_service=postgres_data_service)
+    retraining_pipeline = RetrainingPipeline(data_service=PostgresDataService())
     xgb_model = XGBoostModel()
     
     process_data_stream = ProcessDataStream(
