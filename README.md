@@ -10,7 +10,7 @@ https://github.com/user-attachments/assets/fd242d32-32a2-4a61-a250-abe1f54f00ae
 
 ## How it works
 
-<img src="docs/architecture.svg" width="100%" alt="simulator to redpanda to fraud_detection to postgres to dashboard; labels feed retraining, which registers the model in MLflow; the service hot-reloads it" />
+<p><img src="docs/architecture.svg" width="100%" alt="simulator to redpanda to fraud_detection to postgres to dashboard; labels feed retraining, which registers the model in MLflow; the service hot-reloads it" /></p>
 
 | Service | What it does |
 |---|---|
